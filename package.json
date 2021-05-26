@@ -1,0 +1,24 @@
+{
+  "name": "nfa-track",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harambe-Nakamoto/nfa-track.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Harambe-Nakamoto/nfa-track/issues"
+  },
+  "homepage": "https://github.com/Harambe-Nakamoto/nfa-track#readme",
+  "dependencies": {
+    "ethers": "^5.1.4",
+    "node-telegram-bot-api": "^0.53.0",
+    "typescript": "^4.2.4"
+  }
+}
