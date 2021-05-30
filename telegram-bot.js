@@ -1,9 +1,11 @@
 const ethers = require("ethers");
+const nfts = require("./data");
 const TelegramBot = require("node-telegram-bot-api");
 const utils = ethers.utils;
-const CHAT_ID = "-405709389";
+const CHAT_ID = "-1001302155872";
 const TOKEN = "1744726436:AAGb8TU-VJOI4L90Kadx9_YO2xAzJDlkLtQ";
-
+//-1001302155872 main
+//-405709389 test
 const nfa_address = "0x6eca7754007d22d3F557740d06FeD4A031BeFE1e";
 const wbnb_address = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c";
 const provider = new ethers.providers.JsonRpcProvider(
@@ -23,15 +25,28 @@ const wbnbIface = new utils.Interface(wbnbTransferedAbi);
 const startBot = async (sale) => {
   const bot = new TelegramBot(TOKEN);
   const greenHeart = "💚";
+  const monkey = "🐵";
 
   const bigNumber = (num) => {
     return num / 1e18;
   };
-  const message = `Ape: #${sale.tokenId} \n\nBought For: ${bigNumber(
-    sale.value
-  )} BNB \n\n${greenHeart.repeat(Math.round(bigNumber(sale.value) * 10, 1))}`;
+
+  const getNft = nfts.find((nft) => nft.index === sale.tokenId);
+
+  const message = `
+  Ape: #${sale.tokenId}\nName: ${getNft.name}\nTier: ${monkey.repeat(
+    getNft.attributes.rarityTierNumber
+  )}\n\nBought For: ${bigNumber(sale.value)} BNB \n\n${greenHeart.repeat(
+    Math.round(bigNumber(sale.value) * 10, 1)
+  )}\nhttps://raw.githubusercontent.com/ApeSwapFinance/non-fungible-apes/main/images/${
+    sale.tokenId
+  }.png`;
   if (sale.value !== "0") {
-    bot.sendMessage(CHAT_ID, message);
+    bot.sendMessage(
+      CHAT_ID,
+      message,
+      (options = { disable_web_preview: true })
+    );
   }
 };
 
@@ -104,6 +119,5 @@ const listenToEvents = async () => {
     await processEvent(event);
   });
 };
-
 
 listenToEvents();
