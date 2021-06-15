@@ -2,7 +2,7 @@ const ethers = require("ethers");
 const nfts = require("./data");
 const TelegramBot = require("node-telegram-bot-api");
 const utils = ethers.utils;
-const CHAT_ID = "-405709389";
+const CHAT_ID = "-1001302155872";
 const TOKEN = "1744726436:AAGb8TU-VJOI4L90Kadx9_YO2xAzJDlkLtQ";
 //-1001302155872 main
 //-405709389 test
@@ -121,4 +121,4 @@ const listenToEvents = async () => {
   });
 };
 
-fetchLogs(8329844);
+listenToEvents();
