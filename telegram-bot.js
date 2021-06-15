@@ -2,7 +2,7 @@ const ethers = require("ethers");
 const nfts = require("./data");
 const TelegramBot = require("node-telegram-bot-api");
 const utils = ethers.utils;
-const CHAT_ID = "-1001302155872";
+const CHAT_ID = "-405709389";
 const TOKEN = "1744726436:AAGb8TU-VJOI4L90Kadx9_YO2xAzJDlkLtQ";
 //-1001302155872 main
 //-405709389 test
@@ -26,6 +26,7 @@ const startBot = async (sale) => {
   const bot = new TelegramBot(TOKEN);
   const greenHeart = "💚";
   const monkey = "🐵";
+  const handshake = "🤝";
 
   const bigNumber = (num) => {
     return num / 1e18;
@@ -40,7 +41,7 @@ const startBot = async (sale) => {
     Math.round(bigNumber(sale.value) * 10, 1)
   )}\nhttps://raw.githubusercontent.com/ApeSwapFinance/non-fungible-apes/main/images/${
     sale.tokenId
-  }.png`;
+  }.png \n\nFollow Harambe and Julian on twitter ${handshake}  \n\nhttps://twitter.com/NakamotoHarambe \n\nhttps://twitter.com/JulianApeSwap`;
   if (sale.value !== "0") {
     bot.sendMessage(
       CHAT_ID,
@@ -120,4 +121,4 @@ const listenToEvents = async () => {
   });
 };
 
-listenToEvents();
+fetchLogs(8329844);
